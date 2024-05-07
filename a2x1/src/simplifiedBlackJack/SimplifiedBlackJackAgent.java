@@ -15,6 +15,7 @@ import java.util.Scanner;
  * @author  (Laurin) 
  * @version (2024-05-07)
  */
+
 public class SimplifiedBlackJackAgent {
 
 	/**
@@ -35,7 +36,7 @@ public class SimplifiedBlackJackAgent {
 		dealerspoints = dealCard(card, deck);
 
 		//Printing out Dealer's first card
-		System.out.printf("Dealer's ");
+		System.out.printf("Dealer's first ");
 		printRound(card, dealerspoints);
 		System.out.printf("\n \n");
 
