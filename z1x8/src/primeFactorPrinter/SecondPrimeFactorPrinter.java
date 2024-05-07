@@ -24,7 +24,7 @@ package primeFactorPrinter;
  * @author   (your name(s)) 
  * @version  (a version number or a date)
  */
-public class PrimeFactorPrinter {
+public class SecondPrimeFactorPrinter {
 
 	/**
 	 * print factorization of given number
@@ -51,28 +51,26 @@ public class PrimeFactorPrinter {
 
 		long factor;
 		long restNumber = number;
-
+		
 		long numberSqrt = integerSquareRoot(restNumber);
 
-		if (number > 0) {
-			System.out.printf("%d = ", number);
-			for (long i = 2; i < restNumber; i++) {
-				if (restNumber % i == 0) {
-					factor = i;
-					System.out.printf("%d * ", factor);
-					restNumber = restNumber/factor;
-					numberSqrt = integerSquareRoot(restNumber); //"einmal am Anfang"?
-					i = i-1;
-				}//if()
-				if (i >= numberSqrt+1) {
-					i = number;
-				}//if()
-			}//for()
+		long counter = 1;
+		
+		System.out.printf("%d = ", number);
+
+		while(counter < numberSqrt+1) {
+			++counter;
+			if (restNumber % counter == 0) {
+				factor = counter;
+				System.out.printf("%d * ", factor);
+				restNumber = restNumber/factor;
+				numberSqrt = integerSquareRoot(restNumber); //"einmal am Anfang"?
+				counter = 1;
+			}
 			System.out.printf("%d", restNumber);
-		}//if()
-		else {
-			System.out.println("Das Programm funktioniert nur mit positiven Ganzzahlen.");
-		}//else()
+		}
+		
+		
 
 		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 		// Sofern Sie kein Vorwissen haben und/oder NICHT wissen was Sie tun
@@ -146,7 +144,7 @@ public class PrimeFactorPrinter {
 		currentBitPosition++;
 		}//while
 
-		// start of actual integer square root computation
+			// start of actual integer square root computation
 		// compute integer square root with: w = integerSqrt(x)    =>    (w+1)*(w+1) > x  &&  w*w <= x 
 		long remainder = value - (approximation<<currentBitPosition);
 		do{
@@ -156,7 +154,7 @@ public class PrimeFactorPrinter {
 				remainder = trialResult;
 				approximation += refinement;
 			}//while
-			currentBitPosition--;
+				currentBitPosition--;
 		}while( currentBitPosition >= 0 );
 			}//if
 
