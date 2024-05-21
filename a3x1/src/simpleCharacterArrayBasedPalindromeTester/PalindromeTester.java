@@ -4,19 +4,20 @@ package simpleCharacterArrayBasedPalindromeTester;
 /**
  * PalindromeTester - see task
  * 
- * @author   (your name(s)) 
- * @version  (a version number or a date)
+* @author   (Caroline Renschler und Laurin Kamischke)
+* @version  (240521)
  *
  */
 public class PalindromeTester {
-
-	/**
-	 * Die Methode isPalindrome prueft ob ein Palindrom vorliegt.
-	 * 
-	 * @param word      das zu ueberpruefende Wort.
-	 *
-	 * @return boolean  das zu ueberpruefende Wort ist ein Palindrom.
-	 */
+    
+    /**
+     * Die Methode isPalindrome prueft ob ein Palindrom vorliegt.
+     * 
+     * @param word      das zu ueberpruefende Wort.
+     *
+     * @return boolean  das zu ueberpruefende Wort ist ein Palindrom.
+     */
+	
 	public boolean isPalindrome(char[] word) {
 		
 		boolean palindromeCheck = true;
@@ -25,17 +26,19 @@ public class PalindromeTester {
 		int checkAt = 0;
 		
 		while (checkAt <= wordLength / 2 && palindromeCheck == true) {
-			if (word[checkAt] != word[negativeCheckAt]) {
+			if (word[checkAt] != word[negativeCheckAt] 
+					&& (word[checkAt] - 32) != word[negativeCheckAt]  
+					&& (word[checkAt] + 32) != word[negativeCheckAt]) {
 				palindromeCheck = false;
-			} 
+			}
 			else {
 				checkAt++;
 				negativeCheckAt--;
 			}	
 		}
-
+ 
 		return palindromeCheck;
 		
 	}
-
+	
 }//class
