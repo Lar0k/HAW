@@ -13,7 +13,7 @@ import java.util.*;
  * CardProcessor removing duplicates - see task
  * 
  * @author   (Raffael Apitz, Laurin Kamischke) 
- * @version  (240611)
+ * @version  (240614)
  */
 public class CardProcessor {
     
@@ -29,39 +29,22 @@ public class CardProcessor {
      */
 	
 
-	public Card[] removeDuplicates2(Card... givenCards) {
-		HashSet<Card> sortedCardList = new HashSet<Card>();
+	public Card[] removeDuplicates(Card... givenCards) {
+		Set<Card> noDuplicateCards = new HashSet<Card>();
 		
 		for (int i = 0; i < givenCards.length; i++) {
-			sortedCardList.add(givenCards[i]);
+			noDuplicateCards.add(givenCards[i]);
 		}
 		
-		Card[] sortedCards = new Card[sortedCardList.size()];
-		Iterator<Card> cardIterator = sortedCardList.iterator();
+		Card[] sortedCards = new Card[noDuplicateCards.size()];
+		Iterator<Card> cardIterator = noDuplicateCards.iterator();
 		
 		for (int i = 0; i < sortedCards.length; i++) {
+			//TODO hasnext assert
 			sortedCards[i] = cardIterator.next();
 		}
-		
+
 		return sortedCards;
 	}
 	
-	//---------------------------------------------------------------
-	
-	public Card[] removeDuplicates(Card... givenCards) {
-		ArrayList<Card> sortedCardList = new ArrayList<Card>();
-		
-		for (int i = 0; i < givenCards.length; i++) {
-			if (!sortedCardList.contains(givenCards[i]))    sortedCardList.add(givenCards[i]);
-		}
-		
-		Card[] sortedCards = new Card[sortedCardList.size()];
-		
-		for (int i = 0; i < sortedCards.length; i++) {
-			sortedCards[i] = sortedCardList.removeFirst();
-		}
-		
-		return sortedCards;
-	}
-    
 }//class

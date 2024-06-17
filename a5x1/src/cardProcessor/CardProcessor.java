@@ -29,6 +29,7 @@ public class CardProcessor {
 	 */
 
 	public void reverseOrder(Deck deck, Card lastCard, boolean dbgOutputEnable){
+		//TODO Asserts
 		Card currentCard;
 		Stack<Card> dealtCards = new Stack<Card>();
 		

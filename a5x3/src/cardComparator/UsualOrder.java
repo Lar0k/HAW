@@ -13,8 +13,8 @@ import cards.Card.*;
 /**
  * Comparator for Cards defining "usual order"
  * 
- * @author   (your name(s)) 
- * @version  (a version number or a date)
+ * @author   (Raffael Apitz, Laurin Kamischke) 
+ * @version  (240614)
  */
 
 
@@ -30,14 +30,15 @@ public class UsualOrder implements Comparator<Card> {
 		Suit[] suitOrder = new Suit[] {CLUB, SPADES, HEART, DIAMOND};
 		
 		//Compare Suits
-//		int suitCompare = suitOrder[card1.getSuit().ordinal()].compareTo(
-//				suitOrder[card2.getSuit().ordinal()]);
-		
-		int suitCompare = suitOrder[card1.getSuit().ordinal()].ordinal() -
-							suitOrder[card2.getSuit().ordinal()].ordinal();
-		
-		if (rankCompare == 0)   return suitCompare;
-		else return rankCompare;
+		Suit card1Suit = card1.getSuit();
+		Suit card2Suit = card2.getSuit();
+		int card1SuitOrdinal = card1Suit.ordinal();
+		int card2SuitOrdinal = card2Suit.ordinal();
+		int card1NewSuitOrdinal = suitOrder[card1SuitOrdinal].ordinal();
+		int card2NewSuitOrdinal = suitOrder[card2SuitOrdinal].ordinal();
+		int suitCompare = card1NewSuitOrdinal - card2NewSuitOrdinal;
+
+		return (rankCompare == 0) ? suitCompare : rankCompare;
 	}
 	
 }
